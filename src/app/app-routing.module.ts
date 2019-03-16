@@ -1,10 +1,18 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { HelloComponent } from './hello.component';
+import { HnResolver } from './hn.resolver';
 
-const routes: Routes = [];
+const routes: Routes = [
+  {
+    path: '',
+    component: HelloComponent,
+    resolve: { message: HnResolver },
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}
