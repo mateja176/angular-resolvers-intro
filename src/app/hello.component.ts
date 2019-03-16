@@ -14,7 +14,7 @@ export class HelloComponent implements OnInit {
 
   ngOnInit() {
     this.name = (this.activatedRoute.snapshot.data as {
-      message: string
-    }).message;
+      name: string
+    }).name;
   }
 }

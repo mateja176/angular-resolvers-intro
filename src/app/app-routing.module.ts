@@ -5,9 +5,9 @@ import { HnResolver } from './hn.resolver';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':name',
     component: HelloComponent,
-    resolve: { message: HnResolver },
+    resolve: { name: HnResolver },
   },
 ];
 
