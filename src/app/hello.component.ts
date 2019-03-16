@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Subject } from 'rxjs';
+import { ResolverService } from './resolver.service';
 
 @Component({
   selector: 'app-hello',
   template: `
-    <p>Hello {{ name }}</p>
+    <p>Hello {{ name$ | async }}</p>
   `,
 })
 export class HelloComponent implements OnInit {
-  name: string;
+  name$: Subject<string>;
 
-  constructor(private activatedRoute: ActivatedRoute) {}
+  constructor(private resolverService: ResolverService<string>) {}
 
   ngOnInit() {
-    this.name = (this.activatedRoute.snapshot.data as {
-      name: string
-    }).name;
+    this.name$ = this.resolverService.data$;
   }
 }

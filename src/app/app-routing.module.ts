@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HelloComponent } from './hello.component';
-import { HnResolver } from './hn.resolver';
+import { ResolverGuard } from './resolver.guard';
 
 const routes: Routes = [
   {
     path: ':name',
     component: HelloComponent,
-    resolve: { name: HnResolver },
+    canActivate: [ResolverGuard],
   },
 ];
 
